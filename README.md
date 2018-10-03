@@ -1,5 +1,7 @@
 # video-abstraction-tricks
 Quick tricks for video manipulation and abstraction
+*IMPORTANT: Please use as sole discretion respecting the original ffmpeg
+license agreements.
 
 The scripts that you find here will help you ease your work
 when manipulating or analysing video.
