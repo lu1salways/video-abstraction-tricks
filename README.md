@@ -41,5 +41,5 @@ Parameters are listed here, in order.
 * Output file (mp4)
 
 ```bash
-./mute.sh movie.mp4 mutedmovie.mp4
+./remove-sound.sh movie.mp4 mutedmovie.mp4
 ```
