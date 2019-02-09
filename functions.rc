@@ -1,0 +1,39 @@
+## ~ ################################## ### #### ###############################
+#!/bin/bash ############## ############ ### #### ###############################
+################ ######### #####################################################
+# This file can be sourced with your regular ~/.bashrc or ~/.profile sourcings #
+# Supossing you have ffmpeg and ffplay installed already #######################
+################################################################################
+
+## Slices a video from a given time for a given time
+## Usage: ffmpegslice input.mp4 HH:MM:SS (of start) HH:MM:SS (of length) output.mp4
+function ffmpegslice(){
+  ffmpeg -i $1 -ss $2 -t $3 -async 1 $4
+}
+
+## Removes the sound from video in a copy
+## Usage: ffmpegremovesound input.mp4 output.mp4
+function ffmpegremovesound(){
+  ffmpeg -i $1 -c copy -an $2
+}
+
+## Gets all the frames from a video as jpg images
+## Put first your video in an empty directory to run
+## this function
+## Usage: ffmpegabstractframes input.mp4
+##        and you will see the frames as jpg in order
+function ffmpegabstractframes(){
+  ffmpeg -i $1 -vf fps=1 $1.frame%04d.jpg -hide_banner
+}
+
+## Creates a directory and puts all the frames of the
+## video on there
+## Usage: ffmpegabstractframesps input.mp4
+##        and you will see a directory with all the
+##        frames as jpg inside.
+function ffmpegabstractframesps(){
+  mkdir $1.frames.d
+  cd $1.frames.d
+  ffmpeg -i ../$1 -vf fps=1 frame%04d.jpg -hide-banner
+}
+
